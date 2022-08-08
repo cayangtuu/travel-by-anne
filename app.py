@@ -1,9 +1,9 @@
 from flask import Flask, request, render_template, redirect
-from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 import os, shutil
-
 import pymongo
+from pymongo import ObjectId
+
 client = pymongo.MongoClient("mongodb+srv://root:root1234@mycluster.csdveoq.mongodb.net/?retryWrites=true&w=majority")
 db = client.Travel #選擇操作 test 資料庫
 collection = db.travels # 選擇操作 users 集合
