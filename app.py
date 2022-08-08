@@ -127,4 +127,5 @@ def Upload():
 
     return redirect('/List')
 
-app.run()
+if name == 'main':
+    app.run(debug=True)

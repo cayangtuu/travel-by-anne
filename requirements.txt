@@ -1,5 +1,5 @@
 Flask
 pymongo
 bson
-Werkzeug
+werkzeug
 gunicorn
