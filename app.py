@@ -58,7 +58,6 @@ def Output():
     trip_id = request.args.get("trip-id")
     values = list(collection.find({}))
     tripnm = collection.find_one({'_id':ObjectId(trip_id)})
-    print(tripnm['photo'])
 
     return render_template("output.html", values=values, tripnm=tripnm)
 
@@ -127,5 +126,4 @@ def Upload():
 
     return redirect('/List')
 
-if name == 'main':
-    app.run(debug=True)
+app.run(debug=True)
