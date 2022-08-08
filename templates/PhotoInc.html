@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旅行筆記 by.ChunAn</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{ url_for('static', filename="css/increase.css" ) }}>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                旅行筆記
+            </a>
+            <div>
+                <a href="/List">
+                    <button type="button" class="btn btn-warning">旅行列表</button>
+                </a>
+                <a href="/Inc1st">
+                    <button type="button" class="btn btn-warning">新增旅行</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="form-box">
+        <div class="form-head">
+            <h1>新增旅行筆記</h1>
+            <p>輸入姓名、旅行名稱等相關資訊，我們將為你打造創造屬於你的旅行筆記</p>
+        </div>
+        <form class="form-body" action="/Upload" method="POST" enctype='multipart/form-data'>
+            <div class="mb-3 input-group">
+                <input for="uploadphotos" type="file" class="form-control" name="file[]" multiple required>
+            </div>
+            <div class="btn-confirm">
+                <button class="btn-confirm" id="uploadphotos" type="submit" name="trip-id"
+                    value="{{tripnm['_id']}}">確認</button>
+            </div>
+        </form>
+
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

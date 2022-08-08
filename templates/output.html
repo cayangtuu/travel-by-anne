@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旅行筆記 by.ChunAn</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{ url_for('static', filename="css/index.css" ) }}>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                旅行筆記
+            </a>
+            <div>
+                <a href="/List">
+                    <button type="button" class="btn btn-warning">旅行列表</button>
+                </a>
+                <a href="/Inc1st">
+                    <button type="button" class="btn btn-warning">新增旅行</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <form class="trip-select" action="/Output">
+        <select name="trip-id" class="form-select form-select-lg" aria-label=".form-select-lg">
+            <option selected>旅行名稱</option>
+            {% for value in values %}
+            <option value={{value['_id']}}>{{value['travel']}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="查詢">
+    </form>
+    <section class="outter-box">
+        <div class="inner-box">
+            <div class="box-index">
+                <p class="box-main">{{tripnm['travel']}}</p>
+                <p class="box-time">{{tripnm['time']}}</p>
+                <p class="box-name">── {{tripnm['name']}} ──</p>
+                <p class="box-comm">{{tripnm['comment']}}</p>
+            </div>
+            <div id="carouselExampleIndicators" class="carousel slide box-pic" data-bs-ride="true">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    {%if tripnm['photo']|length >1 %}
+                    {% for i in range(1, tripnm['photo']|length) %}
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{i}}"
+                        aria-label="Slide {{i+1}}"></button>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../static/img/{{tripnm['_id']}}/{{tripnm['photo'][0]}}" class="d-block w-100"
+                            alt="...">
+                    </div>
+                    {% if tripnm['photo']|length >1 %}
+                    {% for i in range(1, tripnm['photo']|length) %}
+                    <div class="carousel-item">
+                        <img src="../static/img/{{tripnm['_id']}}/{{tripnm['photo'][i]}}" class="d-block w-100"
+                            alt="...">
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="btn-ModDel">
+                <form action="/Mod" method="POST">
+                    <button class="btn" name="trip-id" value="{{ tripnm['_id'] }}">修改</button>
+                </form>
+                <form action="/ModDel" method="GET">
+                    <button class="btn" name="trip-id" value="{{ tripnm['_id'] }}">刪除</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

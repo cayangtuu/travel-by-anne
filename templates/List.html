@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旅行筆記 by.ChunAn</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{ url_for('static', filename="css/list.css" ) }}>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                旅行筆記
+            </a>
+            <div>
+                <a href="/List">
+                    <button type="button" class="btn btn-warning">旅行列表</button>
+                </a>
+                <a href="/Inc1st">
+                    <button type="button" class="btn btn-warning">新增旅行</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <section id="introSection" class="py-5">
+        <h1 class="section-title text-center mb-5">旅行列表</h1>
+        <div class="container">
+            <div class="row">
+                {% for value in values %}
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <form action="/Output" class="intro-form">
+                            <div class="icon text-primary py-3">
+                                <img src="../static/img/{{value['_id']}}/{{value['photo'][0]}}" alt="">
+                            </div>
+                            <h3>{{value['travel']}}</h3>
+                            <div class="intro-line bg-primary"></div>
+                            <p>{{value['time']}}</p>
+                            <button class="intro-but" type="submit" name="trip-id" value="{{ value['_id'] }}"></button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

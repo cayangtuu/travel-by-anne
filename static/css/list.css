@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+body {
+    margin: 0px;
+}
+
+.intro-box,
+.intro-line,
+.intro-box .icon {
+    transition: all .3s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+.intro-box {
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 15px 15px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, .25);
+    bottom: 0px;
+}
+
+.intro-box:hover {
+    background: white;
+    box-shadow: 0px 22px 22px rgba(0, 0, 0, .25);
+    bottom: 7px;
+}
+
+.intro-line {
+    width: 20px;
+    height: 6px;
+    border-radius: 3px;
+    margin: 10px auto;
+}
+
+.intro-box:hover .intro-line {
+    width: 40px;
+}
+
+.intro-box .icon {
+    transform: scale(.9);
+}
+
+.intro-box:hover .icon {
+    transform: scale(1);
+}
+
+.icon {
+    overflow: hidden;
+    height: 300px;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-form {
+    z-index: 2;
+}
+
+.intro-but {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 15px;
+    z-index: 1;
+    background-color: white;
+    opacity: 0;
+}

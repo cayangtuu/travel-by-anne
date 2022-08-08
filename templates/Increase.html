@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旅行筆記 by.ChunAn</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{ url_for('static', filename="css/increase.css" ) }}>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                旅行筆記
+            </a>
+            <div>
+                <a href="/List">
+                    <button type="button" class="btn btn-warning">旅行列表</button>
+                </a>
+                <a href="/Inc1st">
+                    <button type="button" class="btn btn-warning">新增旅行</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="form-box">
+        <div class="form-head">
+            <h1>新增旅行筆記</h1>
+            <p>輸入等相關資訊，我們將為你打造創造屬於你的旅行筆記</p>
+        </div>
+        <form class="form-body" action="/Inc2nd" method="POST">
+            <div class="mb-3">
+                <label for="name">姓名</label>
+                <input type="text" id="name" class="form-control" name="personnm" required>
+            </div>
+            <div class="mb-3">
+                <label for="travelnm">旅行名稱</label>
+                <input type="text" id="travelnm" class="form-control" name="travelnm" required>
+            </div>
+            <div class="mb-3">
+                <label for="traveltime">旅行日期</label>
+                <input type="text" id="traveltime" class="form-control" name="traveltime" required>
+            </div>
+            <div class="mb-3">
+                <label class="" for="comment">行程說明與紀錄</label>
+                <br>
+                <textarea class="form-control" id="comment" rows="5" name="comment" required></textarea>
+            </div>
+            <div class="btn-confirm">
+                <button type="submit">下一頁</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
