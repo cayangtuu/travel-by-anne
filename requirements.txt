@@ -1,3 +1,4 @@
-Pymongo
 Flask
+Pymongo
+python-dotenv
 gunicorn
