@@ -1,17 +1,16 @@
 from flask import Flask, request, render_template, redirect
 from werkzeug.utils import secure_filename
 from bson.objectid import ObjectId
-import os, shutil
+from dotenv import load_dotenv
+import os, shutil, pymongo
 
-import pymongo
-client = pymongo.MongoClient("mongodb+srv://root:root1234@mycluster.csdveoq.mongodb.net/?retryWrites=true&w=majority")
+load_dotenv()
+client = pymongo.MongoClient("mongodb+srv://"+os.getenv('login')+"@mycluster.csdveoq.mongodb.net/?retryWrites=true&w=majority")
 db = client.Travel #選擇操作 test 資料庫
 collection = db.travels # 選擇操作 users 集合
 
 
-app = Flask(
-    __name__,
-    )
+app = Flask(__name__)
 
 
 @app.route("/")
@@ -126,4 +125,5 @@ def Upload():
 
     return redirect('/List')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
